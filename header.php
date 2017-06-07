@@ -17,7 +17,8 @@ include_once "bdd/webservice.php";
                         <td> <form action="search.php" method="post">
                                 <span>Recherche</span> 
                                 <input type="text" id="search" name="search"/>
-                            </form></td>
+                            </form>
+                        </td>
 		</tr>
 	</table>
 </header>

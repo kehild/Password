@@ -115,8 +115,7 @@ public function search($db){
 		while($donnees = $resultat->fetch(PDO::FETCH_ASSOC)) {       
 																	
 		echo "<tr><th>"; echo $donnees['nom']; echo "</th>";
-		echo "<th>"; echo stripslashes('<a href="ModifLivre.php?id='.$donnees['id'].'"><img src="images/porte.png"></a>'); echo "</th>";
-		//echo "<th>"; echo '<a href="ModifLivre.php?id='.$donnees['id'].'"><img src="images/modifier.png"></a>'; echo "</th>";
+		echo "<th>"; echo stripslashes('<a href="mdpcomplete.php?id='.$donnees['id'].'"><img src="images/porte.png"></a>'); echo "</th>";
 		echo "<th>"; echo stripslashes('<a href="?id1='.$donnees['id'].'"><img src="images/delete.png"></a>'); echo "</th></tr>"; echo "</th></tr>"; 
 								
 		$nb = $nb + 1;
@@ -145,9 +144,61 @@ public function DeleteMdp($db){
 	echo '<meta http-equiv="refresh" content="0;URL=index.php">';
 }
 
-
+public function MdpComplete($db){
+	 				
+		$stmt = $db->prepare("SELECT * FROM password where id=' " .$_GET['id']. " '"); 
+		$stmt->execute();
+					
+		foreach(($stmt->fetchAll()) as $toto){
+		?>
+		<div>
+			<form method="post" action="">
+			</br>
+			<label for="nom">Nom</label>
+			</br>
+			<input type="text" id="nom" name="nom" value="<?php echo $toto['nom']; ?>">
+			</br>
+			<label for="episode">Login</label>
+			</br>
+			<input type="text" id="login" name="login" value="<?php echo $toto['login']; ?>">
+			</br>
+			<label for="mdp">Mot de Passe</label>
+			</br>
+			<input type="text" id="mdp" name="mdp" value="<?php echo $toto['mdp']; ?>">
+                        </br></br>
+			<input type="submit" id="Modifier" name="Modifier" value="Modifier">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" id="Annuler" name="Annuler" value="Annuler">
+			</br>
+			</form>
+		</div> <?php
+	}					
+}
   
+function UpdateMdp($db){
+	
+		try {
+				
+		$sql = "UPDATE password SET nom='" .$_POST['nom']. "',login='" .$_POST['login']. "',mdp='" .$_POST['mdp']. "' WHERE id='" .$_GET['id']. "'";
+			
+		$db->exec($sql);
+				
+		echo "Modification réussi";
+		echo '<meta http-equiv="refresh" content="0;URL=mdpcomplete.php?id='.$_GET['id'].'">';
+		}
+		catch(Exception $e){
+				
+		echo("<h1>Erreur : Base de données </h1>");
+		die('Erreur : ' .$e->getMessage());
+			
+		}
+}
+
+
+
    public function setDb(PDO $db){
     $this->_db = $db;
   }
 }
+
+
