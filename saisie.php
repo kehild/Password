@@ -8,7 +8,6 @@ if (isset($_POST['Valider'])) {
 	$livre->SaisieMdp($db,$_POST['nom'],$_POST['login'],$_POST['mdp']);	
 }
 
-
 ?>
 
 <div>
@@ -26,16 +25,6 @@ if (isset($_POST['Valider'])) {
 	<label for="mdp">Mot de Passe</label>
     </br></br>
 	<input type="text" id="mdp" name="mdp">
-	</br></br>
-    <label for="categorie">Catégorie</label>
-    	</br></br>
-	<select name="categorie" id="categorie">
-			<option value="Ville">Ville</option>
-                        <option value="Region">Region</option>
-			<option value="Symbole">Symbole</option>
-			<option value="Monument">Monument</option>
-			<option value="Pays">Pays</option>
-	</select>
 	</br></br></br>
     <input type="submit" name="Valider" value="Valider">
 	</br></br>

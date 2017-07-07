@@ -130,7 +130,7 @@ public function search($db){
 
 public function DeleteMdp($db){
 
-	try {
+	try {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 	
 		$stm = $db->prepare("delete from password where id='".$_GET['id1']."'"); 
 		$stm->execute();
@@ -139,7 +139,7 @@ public function DeleteMdp($db){
 				
 		echo("<h1>Erreur : Base de données </h1>");
 		die('Erreur : ' .$e->getMessage());
-		
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 	}
 	echo '<meta http-equiv="refresh" content="0;URL=index.php">';
 }
@@ -174,7 +174,7 @@ public function MdpComplete($db){
 		</div> <?php
 	}					
 }
-  
+                                                                                                                                                                                                        
 function UpdateMdp($db){
 	
 		try {

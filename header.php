@@ -12,7 +12,7 @@ include_once "bdd/webservice.php";
 	<table id="test">	
 		<tr>
 			<td><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; &nbsp </span></td>
-			<td><img src="images/icone.png"/> </td> <!--<img src="image/Cuilieres.png" onclick="Compte()"/> -->
+			<td><img src="images/icone.png" onclick="Home()"/> </td> <!--<img src="image/Cuilieres.png" onclick="Compte()"/> -->
 			<td><h1>Gestion Password</h1></td>
                         <td> <form action="search.php" method="post">
                                 <span>Recherche</span> 
@@ -36,6 +36,10 @@ include_once "bdd/webservice.php";
 	}
 	function closeNav() {
 		document.getElementById("mySidenav").style.width = "0";
+	}
+        function Home(){
+	var url = "index.php";			  
+	 document.location.href = url;
 	}
 </script>
 
